@@ -1,0 +1,29 @@
+@import '../../../styles/colors';
+
+.ProgressBarWrapper {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ProgressBar {
+	flex-grow: 1;
+	width: 100%;
+	height: 6px;
+	border-radius: 3px;
+	background-color: $midnight-700;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.ProgressBarProgress {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: $white;
+	height: 6px;
+	z-index: 2;
+}

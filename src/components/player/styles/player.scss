@@ -1,0 +1,57 @@
+@import '../../../styles/colors';
+
+.VideoWrapper {
+	position: relative;
+	width: 1400px;
+	height: 800px;
+
+	border-radius: 16px;
+	overflow: hidden;
+
+	&:hover .VideoControls {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.Video {
+	background-color: $black;
+	pointer-events: none;
+}
+
+.VideoControls {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	padding: 48px 0;
+	position: absolute;
+	inset: 0;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1160px;
+
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s;
+}
+
+.PlayerVideoName {
+	color: $white;
+}
+
+.VideoControlsHeader {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ControlsHeaderButton {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	svg {
+		rotate: 45deg;
+	}
+}

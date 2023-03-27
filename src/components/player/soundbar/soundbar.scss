@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+
+.VideoPlayerSoundBar {
+	display: flex;
+	gap: 2px;
+}
+
+.VideoPlayerSoundBarPoint {
+	width: 8px;
+	height: 8px;
+	border-radius: 2px;
+	background-color: $midnight-700;
+
+	&.active {
+		background-color: $white;
+	}
+}

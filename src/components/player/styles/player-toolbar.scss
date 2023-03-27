@@ -1,0 +1,52 @@
+@import '../../../styles/colors';
+
+.ControlsToolbar {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+
+	padding: 24px 16px;
+
+	width: 100%;
+	border-radius: 32px;
+	background-color: $midnight-900;
+}
+
+.ToolbarChapters {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	flex-grow: 1;
+	width: 100%;
+
+	p {
+		color: $white;
+	}
+}
+
+.ToolbarControls {
+	gap: 8px;
+	flex-grow: 1;
+	display: flex;
+	width: max-content;
+	align-items: center;
+	padding: 8px 8px 12px;
+	flex-direction: column;
+}
+
+.ToolbarControlsButtons {
+	display: flex;
+	gap: 8px;
+}
+
+.ToolbarControlsText {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 4px;
+	padding: 4px;
+}
+
+.ToolbarControlsHotkeys {
+	width: max-content;
+}
