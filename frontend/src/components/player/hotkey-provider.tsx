@@ -62,11 +62,11 @@ const HotkeyProvider: FC<PropsWithChildren<TProps>> = ({
 	)
 
 	useEffect(() => {
-		document.addEventListener('keydown', playingListener, false)
-		document.addEventListener('keydown', volumeUpListener, false)
-		document.addEventListener('keydown', volumeDownListener, false)
-		document.addEventListener('keydown', rewindNextListener, false)
-		document.addEventListener('keydown', rewindBackListener, false)
+		// document.addEventListener('keydown', playingListener, false)
+		// document.addEventListener('keydown', volumeUpListener, false)
+		// document.addEventListener('keydown', volumeDownListener, false)
+		// document.addEventListener('keydown', rewindNextListener, false)
+		// document.addEventListener('keydown', rewindBackListener, false)
 
 		return () => {
 			document.removeEventListener('keydown', playingListener, false)

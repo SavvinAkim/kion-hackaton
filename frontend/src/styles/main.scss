@@ -8,6 +8,10 @@
 	box-sizing: border-box;
 }
 
+*:focus {
+	outline: 2px solid blueviolet;
+}
+
 body {
 	font-size: 24px;
 	font-family: 'Rubik', 'sans-serif';

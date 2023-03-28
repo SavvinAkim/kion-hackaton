@@ -1,0 +1,24 @@
+@import '../../../../styles/colors';
+
+.ToolsPlayButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: absolute;
+	inset: 0;
+	margin: auto;
+
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+
+	color: $white;
+	background-color: $midnight-700;
+
+	transition: 0.2s;
+
+	&:hover {
+		background-color: $midnight-800;
+	}
+}

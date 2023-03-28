@@ -12,14 +12,17 @@ import {
 	IconPlus
 } from '@tabler/icons-react'
 import ProgressBar from './progress-bar/progress-bar'
-import Button from './button/button'
+import ColumnButton from './buttons/column-button/column-button'
 import Soundbar from './soundbar/soundbar'
+// @ts-ignore
+import { Howl } from 'howler'
 // @ts-ignore
 import videoUrl from './video.mp4'
 import { OnProgressProps } from 'react-player/base'
 import { inRange } from '../../utils/in-range'
 import { pronounce } from '../../lib/pronouncer'
 import { fetchSubtitles, IData } from '../../lib/fetch-subtitles'
+import PlayButton from './buttons/play-button/play-button'
 
 type TDataIndex = IData & {
 	index: number
@@ -37,7 +40,15 @@ const Player: FC = () => {
 		secondsLeft: 0
 	})
 
-	useEffect(() => {}, [])
+	const play = () => {
+		const sound = new Howl({
+			src: 'https://qrshare-io.s3.filebase.com/YodDN1yJRRAl59Bw/a1.mp3',
+			html5: true,
+			volume: 1
+		})
+
+		sound.play()
+	}
 
 	const playerRef = useRef<ReactPlayer>(null)
 
@@ -145,18 +156,33 @@ const Player: FC = () => {
 		>
 			<div className={'VideoWrapper'}>
 				<div className={'VideoControls'}>
+					<PlayButton
+						onClick={() => setPlaying(playing => !playing)}
+						isPlaying={playing}
+					/>
 					<div className={'VideoControlsHeader'}>
-						<h6 className={'PlayerVideoName Title3'}>Бриллиантовая рука</h6>
-						<button className={'ControlsHeaderButton Title5Regular'}>
+						<h1
+							role={'banner'}
+							aria-label={'Название фильма'}
+							className={'PlayerVideoName Title3'}
+						>
+							Бриллиантовая рука
+						</h1>
+						<div
+							onClick={play}
+							className={'ControlsHeaderButton Title5Regular'}
+						>
 							<span className={'gray-400'}>Ctrl W</span>
 							<IconPlus size={32} className={'white'} />
-						</button>
+						</div>
 					</div>
 
 					<div className={'ControlsToolbar'}>
 						<div className={'ToolbarControls ToolbarControlsSound'}>
 							<div className={'ToolbarControlsText'}>
-								<div className={'white Title4Medium'}>Звук</div>
+								<h6 id={'VolumeMenuTitle'} className={'white Title4Medium'}>
+									Звук
+								</h6>
 								<div
 									className={'ToolbarControlsHotkeys gray-500 Title5Semibold'}
 								>
@@ -164,21 +190,28 @@ const Player: FC = () => {
 								</div>
 							</div>
 							<div className={'ToolbarControlsButtons'}>
-								<Button onClick={() => volumeDown()}>
+								<ColumnButton
+									accessKey={'a'}
+									onClick={() => volumeDown()}
+									ariaLabel={'Уменьшить громкость'}
+									tabIndex={2}
+								>
 									<IconMinus />
-								</Button>
-								<Button onClick={() => volumeUp()}>
+								</ColumnButton>
+								<ColumnButton
+									accessKey={'q'}
+									onClick={() => volumeUp()}
+									ariaLabel={'Увеличить громкость'}
+									tabIndex={3}
+								>
 									<IconPlus />
-								</Button>
+								</ColumnButton>
 							</div>
-							<Soundbar currentVolume={volume} maxVolume={1} />
-							<div className={'ToolbarControlsSoundPlayer'}>
-								{[...Array(10)].map((_, index) => (
-									<div
-										key={index}
-										className={'ToolbarControlsSoundPlayerPoint active'}
-									/>
-								))}
+							<div
+								tabIndex={4}
+								aria-label={`Текущая громкость ${volume * 100} процентов`}
+							>
+								<Soundbar currentVolume={volume} maxVolume={1} />
 							</div>
 						</div>
 
@@ -203,12 +236,22 @@ const Player: FC = () => {
 								</div>
 							</div>
 							<div className={'ToolbarControlsButtons'}>
-								<Button onClick={() => rewindBack()}>
+								<ColumnButton
+									accessKey={'j'}
+									onClick={() => rewindBack()}
+									ariaLabel={'Предыдущий раздел'}
+									tabIndex={5}
+								>
 									<IconChevronLeft />
-								</Button>
-								<Button onClick={() => rewindNext()}>
+								</ColumnButton>
+								<ColumnButton
+									accessKey={'l'}
+									onClick={() => rewindNext()}
+									ariaLabel={'Следующий раздел'}
+									tabIndex={6}
+								>
 									<IconChevronRight />
-								</Button>
+								</ColumnButton>
 							</div>
 						</div>
 					</div>
@@ -217,8 +260,8 @@ const Player: FC = () => {
 					className={'Video'}
 					controls={false}
 					url={videoUrl}
-					width={1400}
-					height={800}
+					width={'100%'}
+					height={'100%'}
 					playing={playing}
 					volume={volume}
 					onProgress={onProgress}
