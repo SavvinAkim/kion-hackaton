@@ -2,7 +2,7 @@ import Player from './components/player'
 import './styles/main.scss'
 import './styles/text.scss'
 
-function App() {
+const App = () => {
 	return (
 		<main>
 			<Player />
