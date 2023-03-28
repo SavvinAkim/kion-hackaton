@@ -1,5 +1,7 @@
 // @ts-ignore
-const API_URL = `${import.meta.env.VITE_API_URL}/`
+import {data} from "./fake-data";
+
+// const API_URL = `${import.meta.env.VITE_API_URL}/`
 
 export interface IData {
 	link: string
@@ -8,5 +10,7 @@ export interface IData {
 }
 
 export const fetchSubtitles = async (): Promise<IData[]> => {
-	return await fetch(API_URL).then(response => response.json())
+	return data
+	
+	// return await fetch(API_URL).then(response => response.json())
 }
