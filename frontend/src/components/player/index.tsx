@@ -43,13 +43,19 @@ const Player: FC = () => {
 	useEffect(() => {
 		const getData = async () => {
 			const fetchedData = await fetchSubtitles()
+			const sortedData = fetchedData.sort((a, b) => {
+				if (Number(a.timestamp) > Number(b.timestamp)) {
+					return 1
+				} else {
+					return -1
+				}
+			})
+			const formattedData = sortedData.map((data, index) => ({
+				...data,
+				index
+			}))
 
-			setData(
-				fetchedData.map((data, index) => ({
-					...data,
-					index
-				}))
-			)
+			setData(formattedData)
 		}
 
 		getData()
