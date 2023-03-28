@@ -135,7 +135,7 @@ const Player: FC = () => {
 										accessKey={'a'}
 										onClick={() => volumeDown()}
 										ariaLabel={'Уменьшить громкость'}
-										tabIndex={2}
+										tabIndex={3}
 									>
 										<IconMinus />
 									</ColumnButton>
@@ -143,17 +143,12 @@ const Player: FC = () => {
 										accessKey={'q'}
 										onClick={() => volumeUp()}
 										ariaLabel={'Увеличить громкость'}
-										tabIndex={3}
+										tabIndex={4}
 									>
 										<IconPlus />
 									</ColumnButton>
 								</div>
-								<div
-									tabIndex={4}
-									aria-label={`Текущая громкость ${volume * 100} процентов`}
-								>
-									<Soundbar currentVolume={volume} maxVolume={1} />
-								</div>
+								<Soundbar currentVolume={volume} maxVolume={1} />
 							</div>
 						</div>
 					</div>

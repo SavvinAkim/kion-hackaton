@@ -11,7 +11,11 @@ const Soundbar: FC<TProps> = ({ currentVolume, maxVolume }) => {
 	const currentPoint = currentPercent / 10
 
 	return (
-		<div className={'VideoPlayerSoundBar'}>
+		<div
+			tabIndex={5}
+			aria-label={`Текущая громкость ${currentVolume * 100} процентов`}
+			className={'VideoPlayerSoundBar'}
+		>
 			{[...Array(10)].map((_, index) => (
 				<div
 					key={index}

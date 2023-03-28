@@ -12,7 +12,13 @@ const Switcher: FC<TProps> = ({ isActive, onChange }) => {
 	}
 
 	return (
-		<button onClick={onClick} className={`Switcher ${isActive && 'active'}`}>
+		<button
+			tabIndex={2}
+			role={'switch'}
+			aria-label={'Включить выключить тефло-комментарии'}
+			onClick={onClick}
+			className={`Switcher ${isActive && 'active'}`}
+		>
 			<div className={`SwitcherIndicator`} />
 		</button>
 	)
