@@ -34,3 +34,6 @@ def model_to_dict(model):
         'link': model.link
     }
     return element
+
+if __name__ == '__main__':
+    add_to_db()

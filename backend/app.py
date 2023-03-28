@@ -9,7 +9,6 @@ app = create_app(app_config)
 
 @app.route('/', methods=('GET', 'POST'))
 def pull_data():
-    add_to_db()
     documents = Document.query.all()
     data = []
     for doc in documents:
