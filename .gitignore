@@ -26,7 +26,7 @@ dist-ssr
 # Backend directories and filse
 .idea
 migrations
-api/.flaskenv
+backend/.flaskenv
 __pycache__
 
 .env*
