@@ -1,24 +1,20 @@
 const getVoice = (language: string) => {
 	const voices = window.speechSynthesis.getVoices()
 
-	return voices.filter(voice => voice.name.includes('Pavel'))[0]
+	const pavelVoice = voices.filter(voice => voice.name.includes('Pavel'))[0]
+	const firstRussianVoice = voices.filter(voice => voice.lang === language)[0]
+
+	return pavelVoice ? pavelVoice : firstRussianVoice
 }
 
-export const pronounce = (
-	text: string,
-	pause: () => void,
-	resume: () => void,
-	volume: number
-) => {
+export const pronounce = (text: string, volume: number) => {
 	const utteranceRussianLanguage = 'ru-RU'
 	const utterance = new SpeechSynthesisUtterance(text)
 
 	utterance.lang = utteranceRussianLanguage
 	utterance.voice = getVoice(utterance.lang)
+	utterance.rate = 1.25
 	utterance.volume = volume
-
-	pause()
-	utterance.onend = resume
 
 	window.speechSynthesis.speak(utterance)
 }

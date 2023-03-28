@@ -1,0 +1,35 @@
+@import '../../../styles/colors';
+
+.SwitcherWrapper {
+	input {
+		display: none;
+	}
+}
+
+.Switcher {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	width: 52px;
+	height: 32px;
+	border-radius: 16px;
+	padding: 4px;
+
+	background-color: $midnight-600;
+
+	cursor: pointer;
+	transition: 0.2s;
+
+	&.active {
+		justify-content: flex-end;
+	}
+}
+
+.SwitcherIndicator {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+
+	background-color: $white;
+}

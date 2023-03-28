@@ -1,9 +1,6 @@
-import { FC, MouseEventHandler } from 'react'
+import React, { FC, MouseEventHandler } from 'react'
 import './play-button.scss'
-import {
-	IconPlayerPauseFilled,
-	IconPlayerPlayFilled
-} from '@tabler/icons-react'
+import { IconPlayerPause, IconPlayerPlay } from '@tabler/icons-react'
 
 type TProps = {
 	onClick?: MouseEventHandler<HTMLButtonElement>
@@ -14,18 +11,12 @@ const PlayButton: FC<TProps> = ({ onClick, isPlaying }) => {
 	return (
 		<button
 			tabIndex={1}
-			aria-label={
-				isPlaying ? 'Поставить на паузу' : 'Продолжить воспроизведение'
-			}
+			aria-label={'Паузу или продолжить воспроизведение'}
 			className={'ToolsPlayButton'}
 			onClick={onClick}
 			accessKey={'k'}
 		>
-			{isPlaying ? (
-				<IconPlayerPauseFilled size={48} />
-			) : (
-				<IconPlayerPlayFilled size={48} />
-			)}
+			{isPlaying ? <IconPlayerPause size={24} /> : <IconPlayerPlay size={24} />}
 		</button>
 	)
 }

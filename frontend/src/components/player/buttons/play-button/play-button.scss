@@ -5,13 +5,13 @@
 	align-items: center;
 	justify-content: center;
 
-	position: absolute;
-	inset: 0;
-	margin: auto;
-
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	min-width: 48px;
+	min-height: 48px;
+	max-width: 48px;
+	max-height: 48px;
+	border-radius: 16px;
 
 	color: $white;
 	background-color: $midnight-700;

@@ -10,11 +10,6 @@
 
 	border-radius: 16px;
 	overflow: hidden;
-
-	&:hover .VideoControls {
-		opacity: 1;
-		visibility: visible;
-	}
 }
 
 .Video {
@@ -26,15 +21,14 @@
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	padding: 48px 0;
+	padding: 48px 64px;
 	position: absolute;
 	inset: 0;
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 1160px;
+	//max-width: 1160px;
+	max-width: 100%;
 
-	//opacity: 0;
-	//visibility: hidden;
 	transition: 0.3s;
 }
 
