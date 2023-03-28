@@ -15,8 +15,6 @@ import ProgressBar from './progress-bar/progress-bar'
 import ColumnButton from './buttons/column-button/column-button'
 import Soundbar from './soundbar/soundbar'
 // @ts-ignore
-import { Howl } from 'howler'
-// @ts-ignore
 import videoUrl from './video.mp4'
 import { OnProgressProps } from 'react-player/base'
 import { inRange } from '../../utils/in-range'
@@ -39,16 +37,6 @@ const Player: FC = () => {
 		playedSeconds: 0,
 		secondsLeft: 0
 	})
-
-	const play = () => {
-		const sound = new Howl({
-			src: 'https://qrshare-io.s3.filebase.com/YodDN1yJRRAl59Bw/a1.mp3',
-			html5: true,
-			volume: 1
-		})
-
-		sound.play()
-	}
 
 	const playerRef = useRef<ReactPlayer>(null)
 
@@ -168,10 +156,7 @@ const Player: FC = () => {
 						>
 							Бриллиантовая рука
 						</h1>
-						<div
-							onClick={play}
-							className={'ControlsHeaderButton Title5Regular'}
-						>
+						<div className={'ControlsHeaderButton Title5Regular'}>
 							<span className={'gray-400'}>Ctrl W</span>
 							<IconPlus size={32} className={'white'} />
 						</div>
