@@ -19,39 +19,16 @@ import videoUrl from './video.mp4'
 import { OnProgressProps } from 'react-player/base'
 import { inRange } from '../../utils/in-range'
 import { pronounce } from '../../lib/pronouncer'
-
-interface IData {
-	link: string
-	text: string
-	timestamp: string
-}
+import { fetchSubtitles, IData } from '../../lib/fetch-subtitles'
 
 type TDataIndex = IData & {
 	index: number
 }
 
-const fetchedData: IData[] = [
-	{
-		link: 'https://drive.google.com/file/d/1Z5w1g4sL6qYBQis9r8WL2GctGoSH5MFh/view?usp=share_link',
-		text: 'один',
-		timestamp: '2'
-	},
-	{
-		link: 'https://drive.google.com/file/d/18I3A7IHWWGELTYuq0RoYqC1bn_wA3c0G/view?usp=sharing',
-		text: 'два',
-		timestamp: '16'
-	},
-	{
-		link: 'https://drive.google.com/file/d/1ZAEVHfXQWDOO4gOs0vTmJqTf1nlQ5YXx/view?usp=sharing',
-		text: 'три',
-		timestamp: '32'
-	}
-]
-
 const Player: FC = () => {
 	const [data, setData] = useState([] as TDataIndex[])
 	const [currentIndex, setCurrentIndex] = useState(0)
-	const [subtitles, setSubtitles] = useState('дата')
+	const [subtitles, setSubtitles] = useState('')
 	const [playing, setPlaying] = useState(false)
 	const [volume, setVolume] = useState(1)
 	const [progress, setProgress] = useState({
@@ -60,16 +37,24 @@ const Player: FC = () => {
 		secondsLeft: 0
 	})
 
+	useEffect(() => {}, [])
+
 	const playerRef = useRef<ReactPlayer>(null)
 
 	useEffect(() => {
-		setData([
-			...fetchedData.map((data, index) => ({
-				...data,
-				index
-			}))
-		])
-	}, [fetchedData])
+		const getData = async () => {
+			const fetchedData = await fetchSubtitles()
+
+			setData(
+				fetchedData.map((data, index) => ({
+					...data,
+					index
+				}))
+			)
+		}
+
+		getData()
+	}, [])
 
 	useEffect(() => {
 		console.log(data)

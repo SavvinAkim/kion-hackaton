@@ -17,11 +17,11 @@ def pull_data():
     return jsonify(data)
 
 
-# @app.route('/delete', methods=('GET', 'POST'))
-# def delete_data():
-#     db.session.query(Document).delete()
-#     db.session.commit()
-#     return
+@app.route('/', methods=('GET', 'DELETE'))
+def delete_data():
+    db.session.query(Document).delete()
+    db.session.commit()
+    return
 
 if __name__ == '__main__':
     app.run()

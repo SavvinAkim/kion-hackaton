@@ -7,7 +7,7 @@ def time_to_seconds(time):
     seconds = 0
     for i, element in enumerate(listtime):
         seconds += int(element) * 60 ** i
-    return str(seconds - 3191)
+    return str(seconds - 3187.5)
 
 
 def add_to_db():
