@@ -56,10 +56,6 @@ const Player: FC = () => {
 		getData()
 	}, [])
 
-	useEffect(() => {
-		console.log(data)
-	}, [data])
-
 	const onProgress = (progress: OnProgressProps) => {
 		setProgress({
 			percent: progress.played,

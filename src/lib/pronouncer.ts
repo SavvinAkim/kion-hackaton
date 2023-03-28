@@ -1,13 +1,7 @@
 const getVoice = (language: string) => {
 	const voices = window.speechSynthesis.getVoices()
 
-	for (const voice of voices) {
-		if (voice.lang === language) {
-			return voice
-		}
-	}
-
-	return null
+	return voices.filter(voice => voice.name.includes('Pavel'))[0]
 }
 
 export const pronounce = (
