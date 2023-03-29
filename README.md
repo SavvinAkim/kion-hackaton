@@ -16,14 +16,6 @@ DATABASE_URL=some database url
 SECRET_KEY=some secret key
 ```
 
-### Set Up the app in Windows
-
->Download the code
-```
-$ git clone https://github.com/spacefellow/DocsAPI.git
-Create .flaskenv file in backend folder
-```
-
 >Install modules VENV
 ```
 $ virtualenv env
