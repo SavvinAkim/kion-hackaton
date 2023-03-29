@@ -39,3 +39,8 @@ $ yarn dev
 ```
 
 At this point, the app runs at http://127.0.0.1:5173/api
+
+>Additional information
+```
+
+```
