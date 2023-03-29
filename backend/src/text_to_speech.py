@@ -4,7 +4,7 @@ import sounddevice as sd
 import time
 
 
-def text_to_speech():
+def text_to_speech(text):
     lang = 'ru'
     model_id = 'ru_v3'
     sample_rate = 48000
@@ -12,7 +12,6 @@ def text_to_speech():
     put_accent = True
     put_yo = True
     device = torch.device('cpu')
-    text = 'Пытаюсь привязвть сетку'
     model, _ = torch.hub.load(repo_or_dir='snakers4/silero-models',
                                      model='silero_tts',
                                      language=lang,
