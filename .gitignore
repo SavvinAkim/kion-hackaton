@@ -27,6 +27,7 @@ dist-ssr
 .idea
 migrations
 backend/.flaskenv
+backend/src/buffer.wav
 __pycache__
 
 .env*
