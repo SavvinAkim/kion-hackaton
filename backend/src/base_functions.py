@@ -1,24 +1,34 @@
-# from init import db, s3
-# import pyttsx3
+from flask import jsonify
+import pyttsx3
 from init import db
 from models import Document
 import pandas as pd
 
-# def create_bucket(bucket_name, s3_client, region=None):
-#     if bucket_name not in s3_client.list_buckets():
-#         s3_client.create_bucket(Bucket=bucket_name)
-#     return
-#
-#
-# def upload_file(file_name, bucket, s3_client, object_name):
-#     response = s3_client.upload_file(file_name, bucket, object_name)
-#     return
-#
-#
-# def text_to_speech(text):
-#     pyobj = pyttsx3.init()
-#     pyobj.setProperty("rate", 200)
-#     pyobj.save_to_file(text, 'filebase storage')
+
+def throw_exception(message, status):
+    exception = {
+        'message': message,
+        'status': status
+    }
+
+    return jsonify(exception), status
+
+
+def create_bucket(bucket_name, s3_client, region=None):
+    if bucket_name not in s3_client.list_buckets():
+        s3_client.create_bucket(Bucket=bucket_name)
+    return
+
+
+def upload_file(file_name, bucket, s3_client, object_name):
+    response = s3_client.upload_file(file_name, bucket, object_name)
+    return
+
+
+def text_to_speech(text):
+    pyobj = pyttsx3.init()
+    pyobj.setProperty("rate", 200)
+    pyobj.save_to_file(text, 'filebase storage')
 
 
 def time_to_seconds(time):
@@ -52,6 +62,7 @@ def model_to_dict(model):
         'link': model.link
     }
     return element
+
 
 if __name__ == '__main__':
     add_to_db()

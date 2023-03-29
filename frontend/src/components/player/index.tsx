@@ -11,9 +11,9 @@ import { IconMinus, IconPlus } from '@tabler/icons-react'
 import ColumnButton from './buttons/column-button/column-button'
 import Soundbar from './soundbar/soundbar'
 import { OnProgressProps } from 'react-player/base'
-import { inRange } from '../../utils/in-range'
+import { isInRange } from '../../utils/is-in-range'
 import { pronounce } from '../../lib/pronouncer'
-import { fetchSubtitles, IData } from '../../lib/fetch-subtitles'
+import { fetchSubtitles, IData } from '../../store/fetch-subtitles'
 import PlayButton from './buttons/play-button/play-button'
 import Switcher from './switcher/switcher'
 
@@ -31,7 +31,7 @@ const Player: FC = () => {
 
 	const onProgress = (progress: OnProgressProps) => {
 		const currentComment = data.filter(comment =>
-			inRange(
+			isInRange(
 				[Number(comment.timestamp), Number(comment.timestamp) + 1],
 				progress.playedSeconds
 			)
