@@ -1,7 +1,7 @@
 // @ts-ignore
 import { useSynthesize } from 'react-say'
 // @ts-ignore
-import videoUrl from './video.mp4'
+import videoUrl from './film.mp4'
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import './styles/player.scss'
