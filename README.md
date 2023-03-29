@@ -47,6 +47,4 @@ $ yarn install
 $ yarn dev
 ```
 
-At this point, the app runs at http://127.0.0.1:5173/
-
-To create elements in database move to ...:5000/add
+At this point, the app runs at http://127.0.0.1:5173/api
