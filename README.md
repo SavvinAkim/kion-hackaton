@@ -1,6 +1,6 @@
 ## Kion-Hackaton
 
-This version of the developers includes additional features: cloud data storage (Filebase), a neural network with more pleasant voice acting (Silero).
+This version of the developers does not provide an example of a solution, however, it includes additional features: cloud data storage (Filebase), a neural network with a more pleasant voice acting (Silero).
 
 >Download the code
 ```
