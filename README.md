@@ -43,4 +43,5 @@ At this point, the app runs at http://127.0.0.1:5173/api
 >Additional information
 ```
 The extended version of the project is in the feature/kir branch.
+Use such command in terminal: git checkout feature/kir
 ```
