@@ -7,13 +7,13 @@ const getVoice = (language: string) => {
 	return pavelVoice ? pavelVoice : firstRussianVoice
 }
 
-export const pronounce = (text: string, volume: number) => {
+export const pronounce = (text: string, volume: number, speed: number) => {
 	const utteranceRussianLanguage = 'ru-RU'
 	const utterance = new SpeechSynthesisUtterance(text)
 
 	utterance.lang = utteranceRussianLanguage
 	utterance.voice = getVoice(utterance.lang)
-	utterance.rate = 1.25
+	utterance.rate = speed
 	utterance.volume = volume
 
 	window.speechSynthesis.speak(utterance)

@@ -16,12 +16,14 @@ import { pronounce } from '../../lib/pronouncer'
 import { fetchSubtitles, IData } from '../../store/fetch-subtitles'
 import PlayButton from './buttons/play-button/play-button'
 import Switcher from './switcher/switcher'
+import AudioSpeed from './audio-speed/audio-speed'
 
 const Player: FC = () => {
 	const [data, setData] = useState([] as IData[])
 	const [playing, setPlaying] = useState(false)
 	const [volume, setVolume] = useState(1)
 	const [isPronounceActive, setIsPronounceActive] = useState(true)
+	const [speed, setSpeed] = useState(1)
 
 	const playerRef = useRef<ReactPlayer>(null)
 
@@ -47,7 +49,7 @@ const Player: FC = () => {
 	const pronounceMemo = useCallback(
 		(commentText: string) => {
 			if (!isPronounceActive) return
-			pronounce(commentText, volume)
+			pronounce(commentText, volume, speed)
 		},
 		[volume, isPronounceActive]
 	)
@@ -129,13 +131,17 @@ const Player: FC = () => {
 									}}
 								/>
 							</div>
+							<AudioSpeed
+								currentSpeed={speed}
+								setSpeed={speed => setSpeed(speed)}
+							/>
 							<div className={'ToolbarControlsColumn'}>
 								<div className={'ToolbarControlsButtons'}>
 									<ColumnButton
 										accessKey={'a'}
 										onClick={() => volumeDown()}
 										ariaLabel={'Уменьшить громкость'}
-										tabIndex={3}
+										tabIndex={8}
 									>
 										<IconMinus />
 									</ColumnButton>
@@ -143,7 +149,7 @@ const Player: FC = () => {
 										accessKey={'q'}
 										onClick={() => volumeUp()}
 										ariaLabel={'Увеличить громкость'}
-										tabIndex={4}
+										tabIndex={9}
 									>
 										<IconPlus />
 									</ColumnButton>

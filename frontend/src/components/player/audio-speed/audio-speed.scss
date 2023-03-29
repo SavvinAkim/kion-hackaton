@@ -1,0 +1,21 @@
+@import '../../../styles/colors';
+
+.AudioSpeedWrapper {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.AudioSpeedButton {
+	color: $white;
+	padding: 8px 12px;
+	background-color: $midnight-700;
+
+	&:focus {
+		outline: none;
+		border: 2px solid blueviolet;
+	}
+
+	&.active {
+		background-color: $midnight-400;
+	}
+}
