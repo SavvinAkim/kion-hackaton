@@ -1,6 +1,6 @@
 ## Kion-Hackaton
 
-A simple search engine for the texts of documents. It stores and serves data with Flask, PostgreSQL, Elasticsearch web application.
+This is the developers version to reproduce the example solution.
 
 >Download the code
 ```
