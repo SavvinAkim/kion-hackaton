@@ -1,11 +1,11 @@
 from os import path, getenv
-# from botocore.config import Config
+from botocore.config import Config
 
 
-# boto_config = Config(
-#     region_name = 'us-east-1',
-#     signature_version = 's3v4',
-# )
+boto_config = Config(
+    region_name = 'us-east-1',
+    signature_version = 's3v4',
+)
 
 
 class AppConfig(object):
