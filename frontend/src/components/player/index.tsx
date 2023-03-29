@@ -51,7 +51,7 @@ const Player: FC = () => {
 			if (!isPronounceActive) return
 			pronounce(commentText, volume, speed)
 		},
-		[volume, isPronounceActive]
+		[volume, speed, isPronounceActive]
 	)
 
 	const volumeUp = useCallback(() => {
