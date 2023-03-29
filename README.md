@@ -34,7 +34,6 @@ $ flask run
 
 >Start the frontend_app
 ```
-Create database 'db name' in PostgreSQL
 $ yarn install
 $ yarn dev
 ```
