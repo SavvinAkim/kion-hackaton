@@ -17,13 +17,6 @@ def upload_file(file_name, bucket, s3_client, object_name):
     return
 
 
-
-# def text_to_speech(text):
-#     pyobj = pyttsx3.init()
-#     pyobj.setProperty("rate", 200)
-#     # pyobj.save_to_file(text, 'filebase storage')
-#     return pyobj.say(text)
-
 def time_to_seconds(time):
     listtime = time.split(':')[1::-1]
     seconds = 0
@@ -47,12 +40,6 @@ def add_to_db():
         #             link=element[2].split()[1]))
                 db.session.commit()
         return element[1].split('\n')[1]
-
-
-# pyobj = pyttsx3.init()
-# pyobj.setProperty("rate", 200)
-# pyobj.say('Привет, я твой друг')
-# pyobj.runAndWait()
 
 
 def model_to_dict(model):
