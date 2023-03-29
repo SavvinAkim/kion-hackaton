@@ -14,6 +14,8 @@ FLASK_APP=./run.py
 FLASK_DEBUG=True
 DATABASE_URL=some database url
 SECRET_KEY=some secret key
+AWS_ACCESS_KEY_ID=your AWS key id
+AWS_SECRET_ACCESS_KEY=your AWS secret key
 ```
 
 >Install modules VENV
