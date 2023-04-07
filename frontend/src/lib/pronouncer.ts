@@ -16,5 +16,7 @@ export const pronounce = (text: string, volume: number, speed: number) => {
 	utterance.rate = speed
 	utterance.volume = volume
 
-	window.speechSynthesis.speak(utterance)
+	speechSynthesis.speak(utterance)
+
+	return utterance
 }

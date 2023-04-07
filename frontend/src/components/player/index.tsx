@@ -1,6 +1,4 @@
 // @ts-ignore
-import { useSynthesize } from 'react-say'
-// @ts-ignore
 import videoUrl from './film.mp4'
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
@@ -19,8 +17,8 @@ import Switcher from './switcher/switcher'
 import AudioSpeed from './audio-speed/audio-speed'
 
 const Player: FC = () => {
-	const [data, setData] = useState([] as IData[])
-	const [playing, setPlaying] = useState(false)
+	const [data, setData] = useState<IData[]>([])
+	const [isPlaying, setIsPlaying] = useState(false)
 	const [volume, setVolume] = useState(1)
 	const [isPronounceActive, setIsPronounceActive] = useState(true)
 	const [speed, setSpeed] = useState(1)
@@ -53,6 +51,26 @@ const Player: FC = () => {
 		},
 		[volume, speed, isPronounceActive]
 	)
+
+	const toggleComments = useCallback(() => {
+		setIsPronounceActive(isPronounceActive => !isPronounceActive)
+
+		// Check if pronounce is stopped
+		if (isPronounceActive) {
+			speechSynthesis.cancel()
+		}
+	}, [isPronounceActive])
+
+	const togglePlaying = useCallback(() => {
+		setIsPlaying(isPlaying => !isPlaying)
+
+		// Check if video is stopped
+		if (isPlaying) {
+			speechSynthesis.pause()
+		} else {
+			speechSynthesis.resume()
+		}
+	}, [isPlaying])
 
 	const volumeUp = useCallback(() => {
 		setVolume(currentVolume => {
@@ -90,7 +108,7 @@ const Player: FC = () => {
 
 	return (
 		<HotkeyProvider
-			togglePlaying={() => setPlaying(playing => !playing)}
+			togglePlaying={togglePlaying}
 			volumeUp={volumeUp}
 			volumeDown={volumeDown}
 			rewindNext={rewindNext}
@@ -113,10 +131,7 @@ const Player: FC = () => {
 					</div>
 
 					<div className={'ControlsToolbar'}>
-						<PlayButton
-							onClick={() => setPlaying(playing => !playing)}
-							isPlaying={playing}
-						/>
+						<PlayButton onClick={togglePlaying} isPlaying={isPlaying} />
 
 						<div className={'ToolbarControls'}>
 							<div className={'ToolbarAudioToggle'}>
@@ -126,9 +141,7 @@ const Player: FC = () => {
 								</h6>
 								<Switcher
 									isActive={isPronounceActive}
-									onChange={newState => {
-										setIsPronounceActive(newState)
-									}}
+									onChange={toggleComments}
 								/>
 							</div>
 							<AudioSpeed
@@ -165,7 +178,7 @@ const Player: FC = () => {
 					url={videoUrl}
 					width={'100%'}
 					height={'100%'}
-					playing={playing}
+					playing={isPlaying}
 					volume={volume}
 					onProgress={onProgress}
 					ref={playerRef}
